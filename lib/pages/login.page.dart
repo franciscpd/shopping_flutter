@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shopping/pages/singup.page.dart';
 
 class LoginPage extends StatelessWidget {
   @override
@@ -17,7 +18,7 @@ class LoginPage extends StatelessWidget {
               Container(
                 height: 400,
                 decoration: BoxDecoration(
-                  color: Colors.white,
+                  color: Color(0xFFF5F5F5),
                   boxShadow: [
                     new BoxShadow(
                       color: Colors.black12,
@@ -48,7 +49,13 @@ class LoginPage extends StatelessWidget {
                           ),
                           FlatButton(
                             child: Text("Sign Up"),
-                            onPressed: () {},
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => SignupPage()),
+                              );
+                            },
                           ),
                         ],
                       ),

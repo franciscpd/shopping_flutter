@@ -1,8 +1,31 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_money_formatter/flutter_money_formatter.dart';
 
 class ProductPage extends StatelessWidget {
+  final String image;
+  final String title;
+  final String brand;
+  final double price;
+
+  ProductPage({
+    @required this.image,
+    @required this.title,
+    @required this.brand,
+    @required this.price,
+  });
+
   @override
   Widget build(BuildContext context) {
+    MoneyFormatterOutput fmf = new FlutterMoneyFormatter(
+        amount: price,
+        settings: MoneyFormatterSettings(
+          symbol: '\$ ',
+          thousandSeparator: ',',
+          decimalSeparator: '.',
+          symbolAndNumberSeparator: ' ',
+          fractionDigits: 2,
+        )).output;
+
     return Scaffold(
       body: NestedScrollView(
         headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
@@ -16,7 +39,7 @@ class ProductPage extends StatelessWidget {
               flexibleSpace: FlexibleSpaceBar(
                 centerTitle: true,
                 background: Image.asset(
-                  'assets/product-10.png',
+                  image,
                   width: double.infinity,
                   fit: BoxFit.fitWidth,
                 ),
@@ -33,7 +56,7 @@ class ProductPage extends StatelessWidget {
                 right: 10,
               ),
               child: Text(
-                'Dry Fit Long Sleeve',
+                title,
                 style: TextStyle(
                   fontSize: 26,
                   fontWeight: FontWeight.bold,
@@ -42,7 +65,7 @@ class ProductPage extends StatelessWidget {
             ),
             Padding(
               padding: EdgeInsets.all(10),
-              child: Text('by Nike'),
+              child: Text('by $brand'),
             ),
             Padding(
               padding: EdgeInsets.all(10),

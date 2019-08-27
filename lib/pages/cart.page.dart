@@ -59,7 +59,7 @@ class CartPage extends StatelessWidget {
                     child: Text(
                       'Checkout',
                       style: TextStyle(
-                        color: Colors.white,
+                        color: Theme.of(context).accentColor,
                       ),
                     ),
                     onPressed: () {},
